@@ -1,6 +1,5 @@
 import nc from "next-connect";
-import notes from "../../../data/data";
-//figure out why this server isnt working 
+import notes from "../../../src/data/data";
 const getNote = (id) => notes.find((n) => n.id === parseInt(id));
 
 const handler = nc()
@@ -14,6 +13,8 @@ const handler = nc()
     }
 
     res.json({ data: note });
+    console.log(note);
+
   })
   .patch((req, res) => {
     const note = getNote(req.query.id);
